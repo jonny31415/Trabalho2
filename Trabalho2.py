@@ -20,11 +20,15 @@ class User:
         regex_forbidden_chars = re.compile('[@_!#$%^&*()<>?/\|}{~:]')
         if regex_forbidden_chars.search(self.username):
             raise ValueError("Username cannot have special characters!")
+    
+    def __repr__(self):
+        return f"Username:{self.username}\nRole:{self.role}"
              
 
 def main():
     u1 = User("João", "Password")
     print(u1._User__password_hash)
+    print(u1)
 
 if __name__=="__main__":
     main()
