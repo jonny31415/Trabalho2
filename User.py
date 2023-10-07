@@ -16,7 +16,7 @@ class User:
     
     # Check if username has special characters
     def _filter_username(self):
-        regex_forbidden_chars = re.compile('[@_!#$%^&*()<>?/\\|}{~:]')
+        regex_forbidden_chars = re.compile('[@_!#$%^&*()<>?/\\|}{~:;.,+=]')
         if regex_forbidden_chars.search(self.username):
             raise ValueError("Username cannot have special characters!")
     

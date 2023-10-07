@@ -27,3 +27,16 @@ user_list.append(u4)
 def test_user_login(username, password, expected):
     login_result = login(user_list, username, password)
     assert login_result == expected
+
+
+@pytest.mark.parametrize("username, password", [("Jo@o", "Password"), \
+                                                ("Maria#", "Admin"), \
+                                                ("Jos=é", "123456"), \
+                                                ("An|a", "J*a4Y6)o@HjkL"), \
+                                                ("Joã(o", "password"), \
+                                                ("Mar&ia", "admin"), \
+                                                ("Jos%é", "1234567"), \
+                                                ("Ana$", "J*a4Y6)o@HjkL1")])
+def test_user_creation(username, password):
+    with pytest.raises(ValueError):
+        User(username, password, "user")
